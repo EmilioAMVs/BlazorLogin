@@ -11,44 +11,108 @@
 @inject NavigationManager navManager
 @inject IJSRuntime JSRuntime
 
-
-
-<div class="row mt-5">
-    <div class="col-lg-4 offset-lg-4 border">
-        <div class="mb-3 text-center">
-            <h3>Iniciar Sesion</h3>
-        </div>
-
-        <div class="mb-3">
-            <label>Correo electronico :</label>
-            <input @bind="login.Correo" class="form-control" />
-        </div>
-
-        <div class="mb-3">
-            <label>Contraseña :</label>
-            <input @bind="login.Clave" class="form-control" />
-        </div>
-
-        <div class="mb-3">
+<div class="container" onclick="onclick">
+    <div class="top"></div>
+    <div class="bottom"></div>
+    <div class="center">
+        <h2>Login</h2>
+        <label class="font-family-raleway">Correo electronico :</label>
+        <input @bind="login.Correo" class="form-control" />
+        <label>Contraseña :</label>
+        <input @bind="login.Clave" class="form-control" />
             <button @onclick="IniciarSesion" class="btn btn-primary">Iniciar Sesion</button>
-        </div>
-        
     </div>
-
 </div>
-<br />
-<center>
-    <img src="data:image/png;base64,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" width="200" height="200" />
-  <h5>
-        <br />LISTA DE USUARIOS<br /><br />
-        Administrador<br />
-        Usuario: admin@admin.com<br />
-        Contraseña: admin123<br /><br />
-        Empleado<br />
-        Usuario: empleado@empleado.com<br />
-        Contraseña: empleado123<br />
-    </h5>
-</center>
+
+<style>
+    
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 50vh;
+  font-family: "Raleway", sans-serif;
+}
+
+.container {
+  position: center;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.container:hover .top:before, .container:hover .top:after, .container:hover .bottom:before, .container:hover .bottom:after, .container:active .top:before, .container:active .top:after, .container:active .bottom:before, .container:active .bottom:after {
+  margin-left: 200px;
+  transform-origin: -200px 50%;
+  transition-delay: 0s;
+}
+.container:hover .center, .container:active .center {
+  opacity: 1;
+  transition-delay: 0.2s;
+}
+
+.top:before, .top:after, .bottom:before, .bottom:after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 200vmax;
+  height: 200vmax;
+  top: 50%;
+  left: 50%;
+  margin-top: -100vmax;
+  transform-origin: 0 50%;
+  transition: all 0.5s cubic-bezier(0.445, 0.05, 0, 1);
+  z-index: 10;
+  opacity: 0.65;
+  transition-delay: 0.2s;
+}
+
+.top:before {
+  transform: rotate(45deg);
+  background: #e46569;
+}
+.top:after {
+  transform: rotate(135deg);
+  background: #ecaf81;
+}
+
+.bottom:before {
+  transform: rotate(-45deg);
+  background: #60b8d4;
+}
+.bottom:after {
+  transform: rotate(-135deg);
+  background: #3745b5;
+}
+
+.center {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  top: 50%;
+  left: 50%;
+  margin-left: -200px;
+  margin-top: -200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  opacity: 0;
+  transition: all 0.5s cubic-bezier(0.445, 0.05, 0, 1);
+  transition-delay: 0s;
+  color: #333;
+}
+.center input {
+  width: 100%;
+  padding: 15px;
+  margin: 5px;
+  border-radius: 1px;
+  border: 1px solid #ccc;
+  font-family: inherit;
+}</style>
+
 
 @code {
     private string mensajeError;
